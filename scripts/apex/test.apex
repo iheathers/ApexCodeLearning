@@ -1,27 +1,27 @@
-// DataTypeDemo d = new DataTypeDemo();
-// d.methodDemo();
+// List<Contact> contactList = new List<Contact>{
+//   new Contact(FirstName = 'Pritam', LastName = 'Shrestha'),
+//   new Contact(FirstName = 'Reena', LastName = 'Shrestha'),
+//   new Contact(),
+//   new Contact()
+// };
 
-// Account acc = new Account(name = 'Test Anonymoous User');
-// insert acc;
+// Database.SaveResult[] srList = Database.insert(contactList, false);
 
-// Only Lead, Account and Contact Objects can be merge
-// List<Account> masterAcc = [
-//   SELECT Id, Name
-//   FROM Account
-//   WHERE Name = 'Tech School5'
-//   ALL ROWS
-// ];
+// for (Database.SaveResult sr : srList) {
+//   if (sr.isSuccess()) {
+//     System.debug('Successfull' + sr.getId());
+//   } else {
+//     for (Database.Error err : sr.getErrors()) {
+//       System.debug('Errors');
+//       System.debug(err.getStatusCode() + ':' + err.getMessage());
+//       System.debug('Contact fields ' + err.getFields());
+//     }
+//   }
+// }
 
-// System.debug('masterAcc' + masterAcc);
+List<Account> accList = new List<Account>();
 
-// undelete masterAcc;
-// Account mergeAcc = [SELECT Id, Name FROM Account WHERE Name = 'Tech School4'];
+//
+accList = [SELECT Id, Name FROM Account LIMIT 2];
 
-// merge masterAcc mergeAcc;
-
-try {
-  Acccount acc = new Account();
-  insert acc;
-} catch (DMLException e) {
-  System.debug(e);
-}
+System.debug('accList' + accList);
