@@ -1,22 +1,17 @@
 [
-  { "success": true, "id": "003NS00000gjRQWYA2" },
-  { "success": true, "id": "003NS00000gjRQXYA2" },
   {
-    "success": false,
-    "errors": [
+    "Id": "a01NS000016XeE1YAK",
+    "Name": "Student 1 updated",
+    "Books__r": [
       {
-        "status": "REQUIRED_FIELD_MISSI (2 more) ...",
-        "message": "Required fields are  (19 more) ..."
+        "Student__c": "a01NS000016XeE1YAK",
+        "Id": "a00NS00000gzVujYAE",
+        "Name": "B-0010"
       }
     ]
   },
-  {
-    "success": false,
-    "errors": [
-      {
-        "status": "REQUIRED_FIELD_MISSI (2 more) ...",
-        "message": "Required fields are  (19 more) ..."
-      }
-    ]
-  }
+  { "Id": "a01NS000016f0jFYAQ", "Name": "Student 2 updated" }
 ]
+
+
+[{"Student__c":"a01NS000016XeE1YAK","Id":"a00NS00000gzVujYAE","Name":"B-0010"}]

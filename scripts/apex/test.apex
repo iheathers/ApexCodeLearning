@@ -1,27 +1,27 @@
-// List<Contact> contactList = new List<Contact>{
-//   new Contact(FirstName = 'Pritam', LastName = 'Shrestha'),
-//   new Contact(FirstName = 'Reena', LastName = 'Shrestha'),
-//   new Contact(),
-//   new Contact()
-// };
+List<Student__c> students = new List<Student__c>();
 
-// Database.SaveResult[] srList = Database.insert(contactList, false);
+String name = '%Tech%';
+students = [
+  SELECT Id, Name, (SELECT Id, Name FROM Books__r)
+  FROM Student__c
+];
 
-// for (Database.SaveResult sr : srList) {
-//   if (sr.isSuccess()) {
-//     System.debug('Successfull' + sr.getId());
-//   } else {
-//     for (Database.Error err : sr.getErrors()) {
-//       System.debug('Errors');
-//       System.debug(err.getStatusCode() + ':' + err.getMessage());
-//       System.debug('Contact fields ' + err.getFields());
-//     }
-//   }
-// }
+if (students.isEmpty()) {
+  return;
+}
 
-List<Account> accList = new List<Account>();
+for (Student__c student : students) {
+  System.debug('Student__c Books__r -> ' + student.Books__r);
 
-//
-accList = [SELECT Id, Name FROM Account LIMIT 2];
+  if (student.Books__r.isEmpty()) {
+    System.debug('No Books__r found for Student__c: ' + student.Id);
 
-System.debug('accList' + accList);
+    continue;
+  }
+
+  for (Book__c book : student.Books__r) {
+    System.debug('Books__r For Student__c -> ' + student.Id + ' are ' + book);
+  }
+}
+
+System.debug('student ->' + students);
