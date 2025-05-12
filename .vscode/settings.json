@@ -12,5 +12,7 @@
     "apex": false
   },
   "editor.inlineSuggest.enabled": false,
-  "salesforcedx-vscode-core.show-cli-success-msg": false
+  "salesforcedx-vscode-core.show-cli-success-msg": false,
+  "salesforcedx-vscode-core.enable-sobject-refresh-on-startup": true,
+  "salesforcedx-vscode-core.retrieve-test-code-coverage": true
 }

@@ -1,27 +1,15 @@
-List<Student__c> students = new List<Student__c>();
+// List<List<sObject>> searchList = [
+//   FIND 'Tech'
+//   IN ALL FIELDS
+//   RETURNING Contact(Id, FirstName), Account(Id, Name), Student__c(Id, Name)
+// ];
 
-String name = '%Tech%';
-students = [
-  SELECT Id, Name, (SELECT Id, Name FROM Books__r)
-  FROM Student__c
-];
+// System.debug('SearchList' + searchList);
 
-if (students.isEmpty()) {
-  return;
-}
+// // [
+// // [{id: 1, name: 1}, {id: 2, name: 2} ],
+// // [{id: 3, name: 3}, {id: 4, name: 4}],
+// // ]
 
-for (Student__c student : students) {
-  System.debug('Student__c Books__r -> ' + student.Books__r);
-
-  if (student.Books__r.isEmpty()) {
-    System.debug('No Books__r found for Student__c: ' + student.Id);
-
-    continue;
-  }
-
-  for (Book__c book : student.Books__r) {
-    System.debug('Books__r For Student__c -> ' + student.Id + ' are ' + book);
-  }
-}
-
-System.debug('student ->' + students);
+Account acc = new Account(Name = 'Test Trigger');
+insert acc;
