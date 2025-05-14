@@ -1,4 +1,5 @@
 public class AccountCalculator {
+  @future
   public static void countContacts(List<Id> accountIds) {
     List<Account> accounts = [
       SELECT Id, (SELECT Id FROM Contacts)
@@ -7,7 +8,7 @@ public class AccountCalculator {
     ];
 
     for (Account account : accounts) {
-      account.Number_Of_Contacts__c = account.Contacts.size() + 1;
+      account.Number_Of_Contacts__c = account.Contacts.size();
     }
 
     if (!accounts.isEmpty()) {
