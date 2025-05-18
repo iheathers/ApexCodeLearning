@@ -1,6 +1,11 @@
-RemindOpportunitiesOwners reminder = new RemindOpportunitiesOwners();
+// RemindOpportunitiesOwners reminder = new RemindOpportunitiesOwners();
+OpportunityProcessorScheduler job = new OpportunityProcessorScheduler();
 
 // SECONDS MINUTES HOURS DAYOFMONTH MONTH DAYOFWEEK YEAR
-String schedule = '0 0 0 15 5 ? 2025';
+String schedule = '0 38 10 18 5 ? 2025';
 
-String jobID = System.schedule('Remind Opp Owners', schedule, reminder);
+String jobID = System.schedule(
+  'Opportunity Processor Scheduler',
+  schedule,
+  job
+);

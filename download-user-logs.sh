@@ -3,8 +3,8 @@
 USER="Pritam"
 
 # Input dates in Perth time (AWST)
-START_DATE_PERTH="2025-05-16 00:00:00"
-END_DATE_PERTH="2025-05-16 23:59:59"
+START_DATE_PERTH="2025-05-18 10:38:00"
+END_DATE_PERTH="2025-05-18 23:59:59"
 
 echo "🔍 Searching for users matching name: '$USER'..."
 sf data query --query "SELECT Id, Name, Username FROM User WHERE Name LIKE '%$USER%'" --use-tooling-api
@@ -41,7 +41,9 @@ sf data query --query "SELECT Id FROM ApexLog WHERE LogUserId = '$USER_ID' AND S
 # Extract log IDs
 LOG_IDS=$(sf data query --query "SELECT Id FROM ApexLog WHERE LogUserId = '$USER_ID' AND StartTime >= $START_DATE_UTC AND StartTime <= $END_DATE_UTC" --use-tooling-api --json | jq -r '.result.records[].Id')
 
+rm -rf logs
 # Create directory for logs
+
 mkdir -p logs
 
 # Download each log
