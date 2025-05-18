@@ -3,7 +3,7 @@
 USER="Pritam"
 
 # Input dates in Perth time (AWST)
-START_DATE_PERTH="2025-05-18 10:38:00"
+START_DATE_PERTH="2025-05-18 12:40:00"
 END_DATE_PERTH="2025-05-18 23:59:59"
 
 echo "🔍 Searching for users matching name: '$USER'..."
@@ -24,13 +24,10 @@ echo "🕒 Converting Perth time to UTC..."
 START_EPOCH=$(date -j -f "%Y-%m-%d %H:%M:%S" "$START_DATE_PERTH" +"%s")
 END_EPOCH=$(date -j -f "%Y-%m-%d %H:%M:%S" "$END_DATE_PERTH" +"%s")
 
-# Subtract 8 hours (28800 seconds) for AWST → UTC conversion
-START_EPOCH_UTC=$((START_EPOCH - 28800))
-END_EPOCH_UTC=$((END_EPOCH - 28800))
 
 # Convert epoch to UTC ISO8601 format
-START_DATE_UTC=$(date -u -r "$START_EPOCH_UTC" +"%Y-%m-%dT%H:%M:%SZ")
-END_DATE_UTC=$(date -u -r "$END_EPOCH_UTC" +"%Y-%m-%dT%H:%M:%SZ")
+START_DATE_UTC=$(date -u -r "$START_EPOCH" +"%Y-%m-%dT%H:%M:%SZ")
+END_DATE_UTC=$(date -u -r "$END_EPOCH" +"%Y-%m-%dT%H:%M:%SZ")
 
 echo "🕓 UTC Start: $START_DATE_UTC"
 echo "🕓 UTC End:   $END_DATE_UTC"
